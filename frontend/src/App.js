@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div>
-      <h1>Kieren Hussey</h1>
+      <h1>Kieren</h1>
       <ul>
         {portfolio.map((item) => (
           <li key={item.id}>

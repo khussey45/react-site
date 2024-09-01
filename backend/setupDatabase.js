@@ -10,11 +10,24 @@ db.serialize(() => {
     image TEXT
   )`);
 
-  db.run(`INSERT INTO portfolio_items (title, description, image) VALUES
-    ('Portfolio Item 1', 'Description of the first portfolio item.', '/images/item1.png'),
-    ('Portfolio Item 2', 'Description of the second portfolio item.', '/images/item2.png'),
-    ('Portfolio Item 3', 'Description of the third portfolio item.', '/images/item3.png')
-  `);
-});
+  // Delete existing data
+  db.run('DELETE FROM portfolio_items', (err) => {
+    if (err) {
+      console.error('Error deleting data', err.message);
+      return;
+    }
 
-db.close();
+    // Insert new data
+    db.run(`INSERT INTO portfolio_items (title, description, image) VALUES
+      ('Portfolio Item 1', 'Description of the first portfolio item.', 'logo192.png'),
+      ('Portfolio Item 2', 'Description of the second portfolio item.', 'logo192.png'),
+      ('Portfolio Item 3', 'Description of the third portfolio item.', 'logo192.png')
+    `, (err) => {
+      if (err) {
+        console.error('Error inserting data', err.message);
+      } else {
+        console.log('Sample data inserted successfully.');
+      }
+    });
+  });
+});

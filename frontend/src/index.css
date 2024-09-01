@@ -1,6 +1,111 @@
-/* This is the styling for home page */
+/* General Reset */
+body, ul {
+  margin: 0;
+  padding: 0;
+}
 
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
 
-h1 {
-  text-align: center;
+.navbar-title {
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-list {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-list li {
+  margin-left: 20px;
+}
+
+.navbar-list a {
+  color: white;
+  text-decoration: none;
+}
+
+.hamburger {
+  cursor: pointer;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 24px;
+}
+
+.hamburger .line {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #333;
+  padding: 10px;
+  list-style-type: none;
+  min-width: 150px;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu li {
+  margin: 10px 0;
+}
+
+.dropdown-menu a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 5px 10px;
+}
+
+.dropdown-menu a:hover {
+  background-color: #444;
+}
+
+/* Show the dropdown menu when isOpen is true */
+.dropdown-menu {
+  display: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex; /* Show hamburger icon on small screens */
+  }
+
+  .dropdown-menu {
+    display: flex; /* Show dropdown menu when hamburger is clicked */
+  }
+
+  .navbar-list {
+    display: none; /* Ensure hamburger is always visible */
+  }
+
+  .navbar {
+    justify-content: space-between; /* Adjust for mobile view */
+  }
 }

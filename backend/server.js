@@ -51,6 +51,34 @@ app.post('/api/portfolio', (req, res) => {
   );
 });
 
+app.put('/api/portfolio/:id', (req, res) => {
+  const { title, description, image } = req.body;
+  const { id } = req.params;
+  db.run(
+    `UPDATE portfolio_items SET title = ?, description = ?, image = ? WHERE id = ?`,
+    [title, description, image, id],
+    function (err) {
+      if (err) {
+        res.status(500).json({ error: err.message });
+        return;
+      }
+      res.json({ changes: this.changes });
+    }
+  );
+});
+
+app.delete('/api/portfolio/:id', (req, res) => {
+  const { id } = req.params;
+  db.run(`DELETE FROM portfolio_items WHERE id = ?`, id, function (err) {
+    if (err) {
+      res.status(500).json({ error: err.message });
+      return;
+    }
+    res.json({ deleted: this.changes });
+  });
+});
+
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });

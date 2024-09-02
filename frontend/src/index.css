@@ -17,9 +17,13 @@ body, ul {
   color: white;
   font-size: 1.5em;
   font-weight: bold;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .navbar-right {
+  margin-left: auto;
   display: flex;
   align-items: center;
 }
@@ -97,15 +101,25 @@ body, ul {
     display: flex; /* Show hamburger icon on small screens */
   }
 
-  .dropdown-menu {
-    display: flex; /* Show dropdown menu when hamburger is clicked */
+  .navbar-list {
+    display: none; /* Hide navbar list on small screens */
   }
 
-  .navbar-list {
-    display: none; /* Ensure hamburger is always visible */
+  .navbar-right {
+    justify-content: flex-end; /* Push content to the right */
   }
 
   .navbar {
-    justify-content: space-between; /* Adjust for mobile view */
+    justify-content: center;
+  }
+
+  .navbar-title {
+    position: static;
+    transform: none;
+  }
+
+  .navbar-right {
+    position: absolute;
+    right: 20px;
   }
 }
